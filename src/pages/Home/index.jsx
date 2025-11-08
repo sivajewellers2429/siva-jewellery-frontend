@@ -22,11 +22,11 @@ const features = [
   },
 ];
 
-const Home = () => {
+const Home = ({ updateCartItems, cartItems }) => {
   return (
     <>
       <HeroSection />
-      <FeaturedCollections showOnlyFeatured={true} />
+      <FeaturedCollections showOnlyFeatured={true} updateCartItems={updateCartItems} cartItems={cartItems} />
           {/* Why Choose Us Section */}
         <motion.section 
           className="relative py-16 md:py-20 overflow-hidden"

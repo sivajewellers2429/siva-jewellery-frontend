@@ -1,43 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import FeaturedCollections from '../../components/FeaturedCollections';
 
-const CollectionsPage = () => {
+const CollectionsPage = ({ updateCartItems, cartItems }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <motion.section 
-        className="relative py-20 md:py-28 bg-gradient-to-br from-amber-50 via-white to-amber-50 overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="text-center max-w-4xl mx-auto"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <span className="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
-              Explore Our Range
-            </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Exquisite <span className="bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">Collections</span>
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto mb-8 rounded-full"></div>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Discover our carefully curated collections of fine jewelry, each piece crafted with exceptional attention to detail and timeless elegance.
-            </p>
-          </motion.div>
+      {/* Search Section */}
+      <section className="py-8 bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex">
+              <div className="relative flex-grow">
+                <input
+                  type="text"
+                  placeholder="Search collections..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full px-6 py-4 pl-12 text-gray-700 bg-gray-50 rounded-l-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent shadow-sm transition-all"
+                />
+                <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </div>
+              <button 
+                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-4 rounded-r-2xl font-semibold transition-colors duration-300 shadow-sm"
+                onClick={() => {}}
+              >
+                Search
+              </button>
+            </div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Collections Grid */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FeaturedCollections />
+          <FeaturedCollections 
+            updateCartItems={updateCartItems} 
+            cartItems={cartItems} 
+            searchTerm={searchTerm}
+          />
         </div>
       </section>
 
