@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import ScrollToTop from './components/ScrollToTop';
 
 // Page Components
 import Home from './pages/Home';
@@ -51,6 +52,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
+      <ScrollToTop />
       <Navbar 
         cartItems={cartItems} 
         onIncreaseQuantity={handleIncreaseQuantity}
