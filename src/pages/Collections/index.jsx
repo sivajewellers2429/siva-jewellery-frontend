@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import FeaturedCollections from '../../components/FeaturedCollections';
 
 const CollectionsPage = ({ updateCartItems, cartItems }) => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+
+  const handleWhatsAppConsultation = () => {
+    const phoneNumber = '919505492525';
+    const message = encodeURIComponent('Hello! I would like to schedule a consultation to help me choose the perfect jewelry piece.');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -65,10 +73,16 @@ const CollectionsPage = ({ updateCartItems, cartItems }) => {
               Our expert consultants are here to guide you in selecting the perfect piece that matches your style and occasion.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-amber-600 px-8 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors duration-300 shadow-lg">
+              <button 
+                onClick={handleWhatsAppConsultation}
+                className="bg-white text-amber-600 px-8 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors duration-300 shadow-lg"
+              >
                 Schedule Consultation
               </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-amber-600 transition-all duration-300">
+              <button 
+                onClick={() => navigate('/contact')}
+                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-amber-600 transition-all duration-300"
+              >
                 Contact Us
               </button>
             </div>

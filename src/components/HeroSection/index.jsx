@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaArrowRight, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   
@@ -126,6 +128,7 @@ const HeroSection = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button 
+                  onClick={() => navigate('/collections')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   className={`px-8 py-4 rounded-full font-medium transition-all duration-300 text-sm tracking-wider uppercase flex items-center justify-center ${
@@ -138,6 +141,7 @@ const HeroSection = () => {
                   <FaArrowRight className="ml-2" />
                 </motion.button>
                 <motion.button 
+                  onClick={() => navigate('/about')}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="px-8 py-4 rounded-full font-medium transition-all duration-300 text-sm tracking-wider uppercase border-2 border-white text-white hover:bg-white/10 flex items-center justify-center"
