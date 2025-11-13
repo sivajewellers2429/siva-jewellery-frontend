@@ -109,18 +109,6 @@ const HeroSection = ({ goldRate }) => {
             style={{ background: slides[currentSlide].overlay }}
           />
           
-          {/* Gold Rate Display */}
-          {goldRate && (
-            <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-5 py-3 rounded-lg flex items-center z-20">
-              <span className="text-base font-medium mr-2">24K Gold:</span>
-              <span className="font-bold flex items-center text-xl">
-                <FaRupeeSign className="text-lg mr-1" />
-                {Math.round(goldRate).toLocaleString('en-IN')}
-                <span className="text-base ml-1">/g</span>
-              </span>
-            </div>
-          )}
-          
           {/* Content */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-end justify-center h-full pb-16">
             <motion.div 
@@ -155,6 +143,18 @@ const HeroSection = ({ goldRate }) => {
               </div>
             </motion.div>
           </div>
+          
+          {/* Gold Rate Display */}
+          {goldRate && (
+            <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-6 py-3 rounded-xl flex items-center z-20 shadow-lg">
+              <span className="text-base font-semibold mr-3">24K Gold:</span>
+              <span className="font-bold flex items-center text-xl">
+                <FaRupeeSign className="text-lg mr-2" />
+                {Math.round(goldRate).toLocaleString('en-IN')}
+                <span className="text-base ml-2">/g</span>
+              </span>
+            </div>
+          )}
         </motion.div>
 
       {/* Navigation Arrows */}
